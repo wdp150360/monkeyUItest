@@ -1,4 +1,5 @@
 import json
+from . import random_s
 
 
 class WebPageParseList:
@@ -49,6 +50,16 @@ def generate_node_info_dict(node, source_list):
         source_list = get_node_info(children_node, source_list)
 
     return source_list
+
+
+def touch_action(wd, node):
+
+    pass
+
+
+def slide_action(wd):
+    pass
+
 
 
 if '__main__' == __name__:

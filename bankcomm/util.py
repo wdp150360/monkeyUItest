@@ -3,6 +3,10 @@ import re
 
 def bounds_to_list(bounds):
     bounds_list = re.findall(r'\d+', bounds)
+    if len(bounds_list) == 4:
+        bounds_list = list(map(int, bounds_list))
+    else:
+        bounds_list = []
     return bounds_list
 
 
