@@ -1,12 +1,10 @@
-class tt():
-
-    def __init__(self, n):
-        print(n)
-
-    def ll(self):
-        print('22')
+import re
 
 
-if '__main__' == __name__:
-    t = tt(2)
-    t.ll()
+def bounds_to_list(bounds):
+    bounds_list = re.findall(r'\d+', bounds)
+    return bounds_list
+
+
+if __name__ == '__main__':
+    print(bounds_to_list('[22,234][12,221]'))
