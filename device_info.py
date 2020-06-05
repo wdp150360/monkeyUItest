@@ -54,6 +54,7 @@ class MacacaTest(unittest.TestCase):
 
     def test_currentContext(self):
         context_source = self.driver.source
+        
         print(type(context_source))
         context_source_json = json.loads(context_source)
         context_active = self.driver.get_window_size()
