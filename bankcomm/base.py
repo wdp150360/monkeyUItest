@@ -30,17 +30,23 @@ class ConnectDevice(object):
             pass
         self.driver = WebDriver(desired_caps, server_url)
         print("retry connecting server ...")
-        # warnings.simplefilter('ignore', ResourceWarning)
         wd = self.driver.init()
         return wd
 
 
 def get_device_info(platform_name, package):
 
-    desired_caps = {'platformName': platform_name, 'package': package, 'reuse': 3}
-    device_name = os.popen('adb shell getprop ro.product.model').read()
-    if device_name:
-        desired_caps['deviceName'] = device_name.rstrip("\n")
+    desired_caps = {'platformName': platform_name, 'reuse': 3}
+    if platform_name == 'Android':
+        device_name = os.popen('adb shell getprop ro.product.model').read()
+        if device_name:
+            desired_caps['deviceName'] = device_name.rstrip("\n")
+            desired_caps['package'] = package
+    elif platform_name == 'iOS':
+        device_udid = os.popen('idevice_id -l').read()
+        if device_udid:
+            desired_caps['udid'] = device_udid
+            desired_caps['bundleId'] = package
 
     return desired_caps
 
