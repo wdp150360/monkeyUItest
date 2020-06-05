@@ -36,7 +36,7 @@ class ConnectDevice(object):
 
 def get_device_info(platform_name, package):
 
-    desired_caps = {'platformName': platform_name, 'reuse': 3}
+    desired_caps = {'platformName': platform_name, 'reuse': 3, 'autoAcceptAlerts': True}
     if platform_name == 'Android':
         device_name = os.popen('adb shell getprop ro.product.model').read()
         if device_name:
